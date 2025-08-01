@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viri Costuras - Especialidades GutiHer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        :root {
+            --azul: #5b8fb9;
+            --azul-claro: #e6f0f7;
+            --gris: #6d6d6d;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/costuras-hero.jpg') center/cover no-repeat;
+        }
+        
+        .catalogo {
+            background-color: var(--azul-claro);
+        }
+        
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-filtro {
+            padding: 10px 20px;
+            border: none;
+            background: var(--azul);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-filtro:hover, .btn-filtro.active {
+            background: #4a759e;
+            transform: translateY(-3px);
+        }
+        
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .servicio {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .servicio:hover {
+            transform: translateY(-10px);
+        }
+        
+        .servicio-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .servicio-info {
+            padding: 20px;
+        }
+        
+        .servicio h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #3a546b;
+        }
+        
+        .servicio p {
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .servicio .precio {
+            font-weight: bold;
+            color: var(--azul);
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .servicio-acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-solicitar {
+            flex: 2;
+            background-color: var(--azul);
+        }
+        
+        .btn-detalles {
+            flex: 1;
+            background-color: var(--gris);
+        }
+        
+        .categoria-header {
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--azul);
+            color: #3a546b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/index.html" class="logo"><i class="fas fa-store"></i>GutiHer</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html#pasteles"><i class="fas fa-cake"></i> Pasteles</a></li>
+                    <li><a href="../index.html#flores"><i class="fas fa-spa"></i> Flores</a></li>
+                    <li><a href="../index.html#costuras"><i class="fas fa-tshirt"></i> Costuras</a></li>
+                    <li><a href="../index.html#tecnico"><i class="fas fa-tools"></i> Técnico</a></li>
+                    <li><a href="../index.html#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section para Costuras -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Viri Costuras</h1>
+                <p>Soluciones textiles profesionales para tu vestuario</p>
+                <a href="#catalogo" class="btn">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Servicios -->
+    <section id="catalogo" class="section catalogo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-cut"></i></div>
+                <h2>Nuestros Servicios de Costura</h2>
+                <p>Transformamos tu ropa para un ajuste perfecto</p>
+            </div>
+            
+            <div class="filtros">
+                <button class="btn-filtro active" data-categoria="todos">Todos</button>
+                <button class="btn-filtro" data-categoria="ajustes">Ajustes</button>
+                <button class="btn-filtro" data-categoria="reparaciones">Reparaciones</button>
+                <button class="btn-filtro" data-categoria="confeccion">Confección</button>
+            </div>
+            
+            <h3 class="categoria-header">Ajustes de Prendas</h3>
+            <div class="servicios-grid">
+                <!-- Servicio 1 -->
+                <div class="servicio" data-categoria="ajustes">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/ajuste-pantalones.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Ajuste de Pantalones</h3>
+                        <p>Acortado de bastilla, ajuste de cintura y arreglo de piernas para un mejor calce</p>
+                        <p class="precio">Desde $120.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="servicio" data-categoria="ajustes">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/ajuste-blusas.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Ajuste de Blusas y Camisas</h3>
+                        <p>Reducción o ampliación de talla, ajuste de mangas y cuello para un mejor ajuste</p>
+                        <p class="precio">Desde $150.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="servicio" data-categoria="ajustes">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/ajuste-vestidos.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Ajuste de Vestidos</h3>
+                        <p>Modificación de vestidos para eventos especiales como bodas, XV años y graduaciones</p>
+                        <p class="precio">Desde $250.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="servicio" data-categoria="ajustes">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/ajuste-chalecos.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Ajuste de Chalecos y Trajes</h3>
+                        <p>Personalización de trajes formales para un ajuste perfecto y profesional</p>
+                        <p class="precio">Desde $200.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Reparaciones</h3>
+            <div class="servicios-grid">
+                <!-- Servicio 5 -->
+                <div class="servicio" data-categoria="reparaciones">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/reparacion-cremalleras.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Cambio de Cremalleras</h3>
+                        <p>Reemplazo de cremalleras en pantalones, chaquetas, bolsas y todo tipo de prendas</p>
+                        <p class="precio">Desde $80.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="servicio" data-categoria="reparaciones">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/reparacion-roturas.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Reparación de Roturas</h3>
+                        <p>Arreglo de rasgaduras, agujeros y descosidos en todo tipo de tejidos</p>
+                        <p class="precio">Desde $70.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 7 -->
+                <div class="servicio" data-categoria="reparaciones">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/reparacion-bolsillos.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Reparación de Bolsillos</h3>
+                        <p>Arreglo y refuerzo de bolsillos descosidos o dañados</p>
+                        <p class="precio">Desde $60.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 8 -->
+                <div class="servicio" data-categoria="reparaciones">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/reparacion-botones.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Cambio de Botones</h3>
+                        <p>Reemplazo de botones perdidos o dañados en camisas, blusas y abrigos</p>
+                        <p class="precio">Desde $40.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Confección Personalizada</h3>
+            <div class="servicios-grid">
+                <!-- Servicio 9 -->
+                <div class="servicio" data-categoria="confeccion">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/confeccion-vestidos.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Vestidos a Medida</h3>
+                        <p>Creación de vestidos exclusivos según tus medidas y preferencias</p>
+                        <p class="precio">Desde $1,200.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 10 -->
+                <div class="servicio" data-categoria="confeccion">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/confeccion-trajes.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Trajes a Medida</h3>
+                        <p>Confección de trajes formales y de negocios personalizados</p>
+                        <p class="precio">Desde $1,500.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 11 -->
+                <div class="servicio" data-categoria="confeccion">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/confeccion-uniformes.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Uniformes Escolares y Laborales</h3>
+                        <p>Confección de uniformes para empresas y escuelas</p>
+                        <p class="precio">Desde $250.00 por prenda</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 12 -->
+                <div class="servicio" data-categoria="confeccion">
+                    <div class="servicio-img" style="background-image: url('../assets/img/costuras/confeccion-disfraces.jpg');"></div>
+                    <div class="servicio-info">
+                        <h3>Disfraces Personalizados</h3>
+                        <p>Creación de disfraces únicos para eventos temáticos y fiestas</p>
+                        <p class="precio">Desde $500.00</p>
+                        <div class="servicio-acciones">
+                            <button class="btn btn-solicitar">Solicitar</button>
+                            <button class="btn btn-detalles">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de Contacto Específica -->
+    <section class="section contacto">
+        <div class="container">
+            <div class="contacto-especifico">
+                <div class="contacto-info">
+                    <h3>Contacto Viri Costuras</h3>
+                    <div class="contacto-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Teléfono: <a href="tel:5570855964">5570855964</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <p>WhatsApp: <a href="https://wa.me/525570855964">Enviar mensaje</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-facebook"></i>
+                        <p>Facebook: <a href="https://facebook.com/ViryCosturas">facebook.com/ViryCosturas</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-tiktok"></i>
+                        <p>TikTok: <a href="https://tiktok.com/@ViryCosturas">@ViryCosturas</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Horario: Lunes a Sábado de 9:00 AM a 6:00 PM</p>
+                    </div>
+                </div>
+                <div class="contacto-form">
+                    <h3>Solicitar Servicio</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Tipo de servicio</option>
+                                <option value="ajuste">Ajuste de prenda</option>
+                                <option value="reparacion">Reparación</option>
+                                <option value="confeccion">Confección personalizada</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Detalles del servicio requerido" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" placeholder="Fecha deseada" required>
+                        </div>
+                        <button type="submit" class="btn">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Viri Costuras</h3>
+                    <p>Soluciones textiles profesionales para transformar tu vestuario.</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/ViryCosturas" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com/@ViryCosturas" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/525570855964" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="#catalogo">Servicios</a></li>
+                        <li><a href="../contacto.html">Contacto General</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+                    <p>Sábados: 10:00 AM - 2:00 PM</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Viri Costuras - Especialidades GutiHer. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Filtrado de servicios
+        const filtros = document.querySelectorAll('.btn-filtro');
+        const servicios = document.querySelectorAll('.servicio');
+        
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', () => {
+                // Quitar clase active de todos los botones
+                filtros.forEach(btn => btn.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                filtro.classList.add('active');
+                
+                const categoria = filtro.getAttribute('data-categoria');
+                
+                if (categoria === 'todos') {
+                    servicios.forEach(servicio => {
+                        servicio.style.display = 'block';
+                    });
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'block';
+                    });
+                } else {
+                    // Ocultar todos los servicios
+                    servicios.forEach(servicio => {
+                        servicio.style.display = 'none';
+                    });
+                    
+                    // Mostrar solo los de la categoría seleccionada
+                    document.querySelectorAll(.servicio[data-categoria="${categoria}"]).forEach(servicio => {
+                        servicio.style.display = 'block';
+                    });
+                    
+                    // Ocultar todos los encabezados
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'none';
+                    });
+                }
+            });
+        });
+        
+        // Botones de solicitud
+        document.querySelectorAll('.btn-solicitar').forEach(boton => {
+            boton.addEventListener('click', () => {
+                const servicio = boton.closest('.servicio');
+                const nombre = servicio.querySelector('h3').textContent;
+                alert(¡Gracias por seleccionar ${nombre}! Serás redirigido al formulario de solicitud.);
+                // Desplazar al formulario de contacto
+                document.querySelector('.contacto').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

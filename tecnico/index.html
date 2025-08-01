@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico MAOZ - Especialidades GutiHer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        :root {
+            --azul: #6a9ebd;
+            --azul-oscuro: #3a6a8a;
+            --gris-oscuro: #444;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/tecnico-bg.jpg') center/cover no-repeat;
+        }
+        
+        .catalogo {
+            background-color: var(--azul);
+            color: white;
+        }
+        
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-filtro {
+            padding: 10px 20px;
+            border: none;
+            background: var(--azul-oscuro);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-filtro:hover, .btn-filtro.active {
+            background: #2a5a7a;
+            transform: translateY(-3px);
+        }
+        
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .producto {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            color: var(--gris-oscuro);
+        }
+        
+        .producto:hover {
+            transform: translateY(-10px);
+        }
+        
+        .producto-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .producto-img i {
+            font-size: 4rem;
+            color: var(--azul-oscuro);
+        }
+        
+        .producto-info {
+            padding: 20px;
+        }
+        
+        .producto h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--azul-oscuro);
+        }
+        
+        .producto p {
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .producto .precio {
+            font-weight: bold;
+            color: var(--azul-oscuro);
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .producto-acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-solicitar {
+            flex: 2;
+            background-color: var(--azul-oscuro);
+        }
+        
+        .btn-detalles {
+            flex: 1;
+            background-color: var(--gris-oscuro);
+        }
+        
+        .categoria-header {
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--azul-oscuro);
+            color: white;
+        }
+        
+        .contacto-especifico {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 767px) {
+            .contacto-especifico {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .beneficio {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .beneficio i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo"><i class="fas fa-store"></i>GutiHer</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html#pasteles"><i class="fas fa-cake"></i> Pasteles</a></li>
+                    <li><a href="../index.html#flores"><i class="fas fa-spa"></i> Flores</a></li>
+                    <li><a href="../index.html#costuras"><i class="fas fa-tshirt"></i> Costuras</a></li>
+                    <li><a href="../index.html#tecnico"><i class="fas fa-tools"></i> Técnico</a></li>
+                    <li><a href="../index.html#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section para Servicio Técnico -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Servicio Técnico MAOZ</h1>
+                <p>Expertos en reparación y mantenimiento de electrodomésticos</p>
+                <a href="#catalogo" class="btn">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Servicios Técnicos -->
+    <section id="catalogo" class="section catalogo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-tools"></i></div>
+                <h2>Nuestros Servicios Técnicos</h2>
+                <p>Soluciones profesionales para tus electrodomésticos</p>
+            </div>
+            
+            <div class="filtros">
+                <button class="btn-filtro active" data-categoria="todos">Todos</button>
+                <button class="btn-filtro" data-categoria="lavadoras">Lavadoras/Secadoras</button>
+                <button class="btn-filtro" data-categoria="refrigeracion">Refrigeración</button>
+                <button class="btn-filtro" data-categoria="cocina">Electrodomésticos de Cocina</button>
+            </div>
+            
+            <h3 class="categoria-header">Lavadoras y Secadoras</h3>
+            <div class="productos-grid">
+                <!-- Servicio 1 -->
+                <div class="producto" data-categoria="lavadoras">
+                    <div class="producto-img">
+                        <i class="fas fa-washing-machine"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Lavadoras</h3>
+                        <p>Solución a problemas de centrifugado, fuga de agua, no enciende o no lava</p>
+                        <p class="precio">Desde $300.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="producto" data-categoria="lavadoras">
+                    <div class="producto-img">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Secadoras</h3>
+                        <p>Reparamos problemas de calentamiento, secado incompleto o ruidos anormales</p>
+                        <p class="precio">Desde $350.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="producto" data-categoria="lavadoras">
+                    <div class="producto-img">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Cambio de Transmisión</h3>
+                        <p>Reemplazo profesional de transmisión para lavadoras de carga frontal y superior</p>
+                        <p class="precio">$450.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="producto" data-categoria="lavadoras">
+                    <div class="producto-img">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Cambio de Bomba de Agua</h3>
+                        <p>Reemplazo de bomba de desagüe para solucionar problemas de drenaje</p>
+                        <p class="precio">$380.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Refrigeración</h3>
+            <div class="productos-grid">
+                <!-- Servicio 5 -->
+                <div class="producto" data-categoria="refrigeracion">
+                    <div class="producto-img">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Refrigeradores</h3>
+                        <p>Solución a problemas de enfriamiento, congelación excesiva o fallas eléctricas</p>
+                        <p class="precio">Desde $400.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="producto" data-categoria="refrigeracion">
+                    <div class="producto-img">
+                        <i class="fas fa-temperature-low"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p>Limpieza completa, cambio de empaques y verificación de sistema de enfriamiento</p>
+                        <p class="precio">$320.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 7 -->
+                <div class="producto" data-categoria="refrigeracion">
+                    <div class="producto-img">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Cambio de Compresor</h3>
+                        <p>Reemplazo profesional de compresor para refrigeradores domésticos</p>
+                        <p class="precio">Desde $1,200.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 8 -->
+                <div class="producto" data-categoria="refrigeracion">
+                    <div class="producto-img">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Cavas de Vino</h3>
+                        <p>Especialistas en reparación de cavas de vino y enfriadores especializados</p>
+                        <p class="precio">Desde $500.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Electrodomésticos de Cocina</h3>
+            <div class="productos-grid">
+                <!-- Servicio 9 -->
+                <div class="producto" data-categoria="cocina">
+                    <div class="producto-img">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Estufas</h3>
+                        <p>Solución a problemas de encendido, quemadores, hornos y sistemas eléctricos</p>
+                        <p class="precio">Desde $350.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 10 -->
+                <div class="producto" data-categoria="cocina">
+                    <div class="producto-img">
+                        <i class="fas fa-blender"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Hornos de Microondas</h3>
+                        <p>Solución a problemas de calentamiento, plato giratorio y panel de control</p>
+                        <p class="precio">Desde $280.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 11 -->
+                <div class="producto" data-categoria="cocina">
+                    <div class="producto-img">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Cafeteras</h3>
+                        <p>Especialistas en cafeteras automáticas, de goteo y expreso</p>
+                        <p class="precio">Desde $250.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 12 -->
+                <div class="producto" data-categoria="cocina">
+                    <div class="producto-img">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparación de Extractores</h3>
+                        <p>Soluciones para problemas de extracción, ruido y funcionamiento de campanas</p>
+                        <p class="precio">Desde $320.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-solicitar">Solicitar Servicio</button>
+                            <button class="btn btn-detalles">Más Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Beneficios -->
+            <div class="beneficios">
+                <div class="beneficio">
+                    <i class="fas fa-truck"></i>
+                    <h3>Servicio a Domicilio</h3>
+                    <p>Atendemos en toda el área metropolitana sin costo adicional</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Diagnóstico Gratuito</h3>
+                    <p>Identificamos el problema sin costo antes de realizar cualquier reparación</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantía en Reparaciones</h3>
+                    <p>Todas nuestras reparaciones tienen garantía de 3 meses</p>
+                </div>
+                
+                <div class="beneficio">
+                    <i class="fas fa-tools"></i>
+                    <h3>Refacciones Originales</h3>
+                    <p>Utilizamos refacciones de alta calidad y con garantía</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de Contacto Específica -->
+    <section class="section contacto">
+        <div class="container">
+            <div class="contacto-especifico">
+                <div class="contacto-info">
+                    <h3>Contacto Servicio Técnico MAOZ</h3>
+                    <div class="contacto-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Teléfono: <a href="tel:7294869952">7294869952</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <p>WhatsApp: <a href="https://wa.me/527294869952">Enviar mensaje</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>Email: <a href="mailto:servicio@maoztecnico.com">servicio@maoztecnico.com</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Área de servicio: Zumpango y municipios aledaños</p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Horario: Lunes a Sábado de 8:00 AM a 8:00 PM</p>
+                    </div>
+                </div>
+                <div class="contacto-form">
+                    <h3>Solicitar Visita Técnica</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Tipo de electrodoméstico</option>
+                                <option>Lavadora/Secadora</option>
+                                <option>Refrigerador</option>
+                                <option>Estufa/Horno</option>
+                                <option>Microondas</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Describe el problema" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" placeholder="Fecha preferida" required>
+                        </div>
+                        <button type="submit" class="btn">Solicitar Visita</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Servicio Técnico MAOZ</h3>
+                    <p>Expertos en reparación y mantenimiento de electrodomésticos con calidad garantizada.</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/ServicioMAOZ" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/527294869952" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="#catalogo">Servicios</a></li>
+                        <li><a href="../index.html#contacto">Contacto General</a></li>
+                        <li><a href="#">Política de Garantías</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p>Lunes a Viernes: 8:00 AM - 8:00 PM</p>
+                    <p>Sábados: 9:00 AM - 6:00 PM</p>
+                    <p>Domingos: Solo emergencias</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Servicio Técnico MAOZ - Especialidades GutiHer. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Filtrado de servicios
+        const filtros = document.querySelectorAll('.btn-filtro');
+        const servicios = document.querySelectorAll('.producto');
+        
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', () => {
+                // Quitar clase active de todos los botones
+                filtros.forEach(btn => btn.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                filtro.classList.add('active');
+                
+                const categoria = filtro.getAttribute('data-categoria');
+                
+                if (categoria === 'todos') {
+                    servicios.forEach(servicio => {
+                        servicio.style.display = 'block';
+                    });
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'block';
+                    });
+                } else {
+                    // Ocultar todos los servicios
+                    servicios.forEach(servicio => {
+                        servicio.style.display = 'none';
+                    });
+                    
+                    // Mostrar solo los de la categoría seleccionada
+                    document.querySelectorAll(.producto[data-categoria="${categoria}"]).forEach(servicio => {
+                        servicio.style.display = 'block';
+                    });
+                    
+                    // Ocultar todos los encabezados
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'none';
+                    });
+                }
+            });
+        });
+        
+        // Botones de solicitud
+        document.querySelectorAll('.btn-solicitar').forEach(boton => {
+            boton.addEventListener('click', () => {
+                const servicio = boton.closest('.producto');
+                const nombre = servicio.querySelector('h3').textContent;
+                alert(¡Gracias por seleccionar "${nombre}"! Un técnico se pondrá en contacto para agendar tu servicio.);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KV Flor Eterna - Especialidades GutiHer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        :root {
+            --verde: #a8d8b9;
+            --verde-oscuro: #5a9e7f;
+            --rosa: #ff9ebc;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/flores-bg.jpg') center/cover no-repeat;
+        }
+        
+        .catalogo {
+            background-color: var(--verde);
+        }
+        
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-filtro {
+            padding: 10px 20px;
+            border: none;
+            background: var(--verde-oscuro);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-filtro:hover, .btn-filtro.active {
+            background: #4a8d6d;
+            transform: translateY(-3px);
+        }
+        
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .producto {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .producto:hover {
+            transform: translateY(-10px);
+        }
+        
+        .producto-img-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .producto-img {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s ease;
+        }
+        
+        .producto-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(90, 158, 127, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .producto:hover .producto-overlay {
+            opacity: 1;
+        }
+        
+        .producto:hover .producto-img {
+            filter: blur(3px);
+            transform: scale(1.1);
+        }
+        
+        .descripcion-detallada {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .descripcion-detallada ul {
+            text-align: left;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .producto-info {
+            padding: 20px;
+        }
+        
+        .producto h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2e6b4c;
+        }
+        
+        .producto p {
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .producto .precio {
+            font-weight: bold;
+            color: var(--verde-oscuro);
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .producto-acciones {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-comprar {
+            flex: 1;
+            background-color: var(--verde-oscuro);
+        }
+        
+        .categoria-header {
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--verde-oscuro);
+            color: #2e6b4c;
+        }
+        
+        .contacto-especifico {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 767px) {
+            .contacto-especifico {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo"><i class="fas fa-store"></i>GutiHer</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html#pasteles"><i class="fas fa-cake"></i> Pasteles</a></li>
+                    <li><a href="../index.html#flores"><i class="fas fa-spa"></i> Flores</a></li>
+                    <li><a href="../index.html#costuras"><i class="fas fa-tshirt"></i> Costuras</a></li>
+                    <li><a href="../index.html#tecnico"><i class="fas fa-tools"></i> Técnico</a></li>
+                    <li><a href="../index.html#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section para Flores -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>KV Flor Eterna</h1>
+                <p>Arte floral que convierte momentos en recuerdos eternos</p>
+                <a href="#catalogo" class="btn">Ver Catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Arreglos Florales -->
+    <section id="catalogo" class="section catalogo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-seedling"></i></div>
+                <h2>Nuestro Catálogo Completo</h2>
+                <p>Selecciona tu arreglo floral ideal</p>
+            </div>
+            
+            <div class="filtros">
+                <button class="btn-filtro active" data-categoria="todos">Todos</button>
+                <button class="btn-filtro" data-categoria="ramos">Ramos</button>
+                <button class="btn-filtro" data-categoria="centros">Centros de Mesa</button>
+                <button class="btn-filtro" data-categoria="eventos">Para Eventos</button>
+            </div>
+            
+            <h3 class="categoria-header">Ramos y Bouquets</h3>
+            <div class="productos-grid">
+                <!-- Arreglo 1 -->
+                <div class="producto" data-categoria="ramos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/ramo-novia.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Elegante ramo para novias con rosas blancas premium, lirios y gypsophila. Diseñado para complementar vestidos de novia tradicionales y modernos.</p>
+                                
+                                <p>Especificaciones:</p>
+                                <ul>
+                                    <li>12 rosas blancas de tallo largo</li>
+                                    <li>5 lirios blancos</li>
+                                    <li>Gypsophila como relleno</li>
+                                    <li>Cinta de satén blanco</li>
+                                    <li>Duración: 5-7 días con cuidados</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Ramo de Novia Clásico</h3>
+                        <p>Rosas blancas, lirios y gypsophila para un look elegante y atemporal</p>
+                        <p class="precio">$850.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 2 -->
+                <div class="producto" data-categoria="ramos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/bouquet-girasoles.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Este vibrante bouquet combina girasoles frescos con follaje complementario para crear un arreglo lleno de energía y vitalidad.</p>
+                                
+                                <p>Características:</p>
+                                <ul>
+                                    <li>Girasoles frescos de temporada</li>
+                                    <li>Follaje natural complementario</li>
+                                    <li>Altura aproximada: 45 cm</li>
+                                    <li>Duración estimada: 7-10 días</li>
+                                </ul>
+                                
+                                <p>Entrega incluye cuidados básicos para prolongar su frescura.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Bouquet de Girasoles</h3>
+                        <p>Vibrante arreglo con girasoles frescos y follaje complementario</p>
+                        <p class="precio">$450.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 3 -->
+                <div class="producto" data-categoria="ramos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/ramo-rosas-rojas.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Clásico y romántico ramo de 24 rosas rojas premium, perfecto para declaraciones de amor o aniversarios.</p>
+                                
+                                <p>Detalles:</p>
+                                <ul>
+                                    <li>24 rosas rojas frescas</li>
+                                    <li>Follaje verde de complemento</li>
+                                    <li>Envoltura elegante en papel kraft</li>
+                                    <li>Altura: 50 cm</li>
+                                    <li>Incluye tarjeta personalizada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Ramo de Rosas Rojas</h3>
+                        <p>24 rosas rojas premium con follaje verde y envoltura elegante</p>
+                        <p class="precio">$650.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 4 -->
+                <div class="producto" data-categoria="ramos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/bouquet-orquideas.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Bouquet de lujo con orquídeas phalaenopsis en un diseño minimalista contemporáneo. Ideal para regalos ejecutivos o decoración de interiores.</p>
+                                
+                                <p>Especificaciones:</p>
+                                <ul>
+                                    <li>3 tallos de orquídeas phalaenopsis</li>
+                                    <li>Base de musgo preservado</li>
+                                    <li>Maceta de cerámica blanca incluida</li>
+                                    <li>Duración: 3-4 semanas</li>
+                                    <li>Cuidados especiales incluidos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Bouquet de Orquídeas</h3>
+                        <p>Elegantes orquídeas phalaenopsis en un arreglo minimalista moderno</p>
+                        <p class="precio">$1,200.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Centros de Mesa</h3>
+            <div class="productos-grid">
+                <!-- Arreglo 5 -->
+                <div class="producto" data-categoria="centros">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/centro-primavera.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Centro de mesa alegre con flores de temporada que capturan la esencia de la primavera. Perfecto para alegrar comedores o espacios de recepción.</p>
+                                
+                                <p>Contiene:</p>
+                                <ul>
+                                    <li>Tulipanes multicolor</li>
+                                    <li>Girasoles pequeños</li>
+                                    <li>Hortensias azules</li>
+                                    <li>Verde complementario</li>
+                                    <li>Base en recipiente transparente</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Centro Primaveral</h3>
+                        <p>Mezcla de tulipanes, girasoles y hortensias para alegrar cualquier espacio</p>
+                        <p class="precio">$650.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 6 -->
+                <div class="producto" data-categoria="centros">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/centro-moderno.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Diseño contemporáneo que combina suculentas con flores exóticas en una base de cemento minimalista. Ideal para espacios modernos y oficinas.</p>
+                                
+                                <p>Características:</p>
+                                <ul>
+                                    <li>Suculentas variadas</li>
+                                    <li>Orquídeas y anturios</li>
+                                    <li>Base de cemento personalizable</li>
+                                    <li>Bajo mantenimiento</li>
+                                    <li>Duración prolongada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Centro Moderno</h3>
+                        <p>Diseño contemporáneo con suculentas y flores exóticas en base de cemento</p>
+                        <p class="precio">$750.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 7 -->
+                <div class="producto" data-categoria="centros">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/centro-clasico.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Elegante centro de mesa con flores clásicas en una composición tradicional. Perfecto para mesas de comedor, recepciones y eventos formales.</p>
+                                
+                                <p>Composición:</p>
+                                <ul>
+                                    <li>Rosas rojas y blancas</li>
+                                    <li>Claveles premium</li>
+                                    <li>Liliums fragantes</li>
+                                    <li>Verde de relleno</li>
+                                    <li>Jarrón de cristal incluido</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Centro Clásico</h3>
+                        <p>Rosas, claveles y liliums en un arreglo tradicional para ocasiones especiales</p>
+                        <p class="precio">$600.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 8 -->
+                <div class="producto" data-categoria="centros">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/centro-rustico.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Composición rústica con flores de campo y hierbas aromáticas en una cesta de mimbre natural. Ideal para eventos campestres o decoración rústica.</p>
+                                
+                                <p>Contiene:</p>
+                                <ul>
+                                    <li>Margaritas y girasoles pequeños</li>
+                                    <li>Romero y lavanda</li>
+                                    <li>Otras flores de campo</li>
+                                    <li>Cesta de mimbre natural</li>
+                                    <li>Aroma natural fresco</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Centro Rústico</h3>
+                        <p>Flores de campo con hierbas aromáticas en cesta de mimbre natural</p>
+                        <p class="precio">$550.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header">Para Eventos Especiales</h3>
+            <div class="productos-grid">
+                <!-- Arreglo 9 -->
+                <div class="producto" data-categoria="eventos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/arreglo-xv.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Arreglo especial para XV años en tonos pastel con detalles dorados. Personalizable según colores de la celebración.</p>
+                                
+                                <p>Elementos:</p>
+                                <ul>
+                                    <li>Rosas y peonias en tonos pastel</li>
+                                    <li>Detalles dorados y perlas</li>
+                                    <li>Base para centro de mesa</li>
+                                    <li>Altura: 60 cm</li>
+                                    <li>Personalizable con colores específicos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Arreglo para XV Años</h3>
+                        <p>Elegante diseño en tonos pastel con rosas, peonias y detalles dorados</p>
+                        <p class="precio">Desde $1,500.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 10 -->
+                <div class="producto" data-categoria="eventos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/arreglo-boda.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Paquete completo de decoración floral para bodas que incluye todos los elementos necesarios para una celebración memorable.</p>
+                                
+                                <p>Incluye:</p>
+                                <ul>
+                                    <li>Ramo de novia personalizado</li>
+                                    <li>Boutonnieres para el novio y padrinos</li>
+                                    <li>10 centros de mesa</li>
+                                    <li>Arco floral para ceremonia</li>
+                                    <li>Decoración adicional para pastel</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Decoración para Bodas</h3>
+                        <p>Paquete completo: ramo novia, boutonnieres, centros de mesa y arco floral</p>
+                        <p class="precio">Desde $5,000.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 11 -->
+                <div class="producto" data-categoria="eventos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/arreglo-corporativo.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Arreglos sofisticados para eventos corporativos, diseñados para proyectar profesionalismo y elegancia en cualquier espacio empresarial.</p>
+                                
+                                <p>Opciones:</p>
+                                <ul>
+                                    <li>Arreglos para recepción</li>
+                                    <li>Centros para mesas de conferencia</li>
+                                    <li>Decoración para inauguraciones</li>
+                                    <li>Arreglos para aniversarios corporativos</li>
+                                    <li>Diseños personalizados con logo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Eventos Corporativos</h3>
+                        <p>Arreglos sofisticados para inauguraciones, aniversarios y conferencias</p>
+                        <p class="precio">Desde $2,000.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arreglo 12 -->
+                <div class="producto" data-categoria="eventos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/flores/arreglo-funerario.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Respetuosos arreglos florales para servicios funerarios, diseñados para expresar condolencias con elegancia y sensibilidad.</p>
+                                
+                                <p>Opciones:</p>
+                                <ul>
+                                    <li>Coronas tradicionales</li>
+                                    <li>Cruces florales</li>
+                                    <li>Arreglos en forma de corazón</li>
+                                    <li>Diseños personalizados</li>
+                                    <li>Entrega directa al velatorio</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Arreglos Funerarios</h3>
+                        <p>Coronas y cruces florales con diseños respetuosos y elegantes</p>
+                        <p class="precio">Desde $1,200.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de Contacto Específica -->
+    <section class="section contacto">
+        <div class="container">
+            <div class="contacto-especifico">
+                <div class="contacto-info">
+                    <h3>Contacto KV Flor Eterna</h3>
+                    <div class="contacto-item">
+                        <i class="fas fa-phone"></i>
+                        <p>Teléfono: <a href="tel:5570855964">5570855964</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <p>WhatsApp: <a href="https://wa.me/525570855964">Enviar mensaje</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-instagram"></i>
+                        <p>Instagram: <a href="https://instagram.com/KVFlorEterna">@KVFlorEterna</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fab fa-tiktok"></i>
+                        <p>TikTok: <a href="https://tiktok.com/@KVFlorEterna">@KVFlorEterna</a></p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Horario: Domingo a Jueves de 8:00 AM a 8:00 PM</p>
+                    </div>
+                </div>
+                <div class="contacto-form">
+                    <h3>Solicitar Presupuesto</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Tipo de evento</option>
+                                <option>Boda</option>
+                                <option>XV Años</option>
+                                <option>Evento Corporativo</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Describe tu necesidad floral" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" placeholder="Fecha del evento" required>
+                        </div>
+                        <button type="submit" class="btn">Solicitar Presupuesto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KV Flor Eterna</h3>
+                    <p>Arte floral que transforma momentos en recuerdos eternos.</p>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/KVFlorEterna" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@KVFlorEterna" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/525570855964" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="../index.html#contacto">Contacto General</a></li>
+                        <li><a href="#">Política de Entrega</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p>Domingo a Jueves: 8:00 AM - 8:00 PM</p>
+                    <p>Sábados: Cerrado</p>
+                    <p>Viernes: 8:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 KV Flor Eterna - Especialidades GutiHer. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Filtrado de productos
+        const filtros = document.querySelectorAll('.btn-filtro');
+        const productos = document.querySelectorAll('.producto');
+        
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', () => {
+                // Quitar clase active de todos los botones
+                filtros.forEach(btn => btn.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                filtro.classList.add('active');
+                
+                const categoria = filtro.getAttribute('data-categoria');
+                
+                if (categoria === 'todos') {
+                    productos.forEach(producto => {
+                        producto.style.display = 'block';
+                    });
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'block';
+                    });
+                } else {
+                    // Ocultar todos los productos
+                    productos.forEach(producto => {
+                        producto.style.display = 'none';
+                    });
+                    
+                    // Mostrar solo los de la categoría seleccionada
+                    document.querySelectorAll(.producto[data-categoria="${categoria}"]).forEach(producto => {
+                        producto.style.display = 'block';
+                    });
+                    
+                    // Ocultar todos los encabezados
+                    document.querySelectorAll('.categoria-header').forEach(header => {
+                        header.style.display = 'none';
+                    });
+                }
+            });
+        });
+        
+        // Botones de compra
+        document.querySelectorAll('.btn-comprar').forEach(boton => {
+            boton.addEventListener('click', () => {
+                const producto = boton.closest('.producto');
+                const nombre = producto.querySelector('h3').textContent;
+                alert(¡Gracias por seleccionar "${nombre}"! Serás redirigido al proceso de compra.);
+            });
+        });
+    </script>
+</body>
+</html>
