@@ -737,3 +737,28 @@ footer {
         height: auto;
     }
 }
+@media (max-width: 767px) {
+  .producto-img {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .producto h3 {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .producto p {
+    font-size: 0.9rem;
+  }
+
+  .producto button {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .productos-container {
+    grid-template-columns: 1fr;
+  }
+}
