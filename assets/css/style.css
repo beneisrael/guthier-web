@@ -717,3 +717,23 @@ footer {
         font-size: 2rem;
     }
 }
+@media (max-width: 767px) {
+    .section .image img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .section-content {
+        max-width: 95%;
+        margin: auto;
+        padding: 0 10px;
+    }
+
+    .productos-grid img {
+        max-width: 100%;
+        height: auto;
+    }
+}
