@@ -6,16 +6,216 @@
     <title>Pasteles K'fe - Especialidades GutiHer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         :root {
             --rosa: #ff9ebc;
             --rosa-claro: #ffe8f0;
+            --rosa-oscuro: #d86a8c;
+            --crema: #fdf5e6;
             --marron: #d2b48c;
+            --verde: #a8d8b9;
+            --verde-oscuro: #5a9e7f;
+            --azul: #6a9ebd;
+            --azul-oscuro: #3a6a8a;
+            --gris: #e0e0e0;
+            --gris-oscuro: #444;
+            --blanco: #ffffff;
+            --negro: #333333;
+            --sombra: rgba(0,0,0,0.1);
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--negro);
+            background-color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 10px var(--sombra);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--rosa);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--rosa);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.8rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--negro);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--rosa);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--rosa);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--negro);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animación hamburguesa */
+        .hamburger.toggle div:first-child {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.toggle div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.toggle div:last-child {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section para Pasteles */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/pasteles-bg.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80') center/cover no-repeat;
+            color: var(--blanco);
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--rosa);
+            color: var(--blanco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: var(--rosa-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--blanco);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--blanco);
+            color: var(--rosa);
         }
         
         .catalogo {
@@ -33,7 +233,7 @@
         .btn-filtro {
             padding: 10px 20px;
             border: none;
-            background: var(--rosa);
+            background: var(--rosa-oscuro);
             color: white;
             border-radius: 30px;
             cursor: pointer;
@@ -41,7 +241,7 @@
         }
         
         .btn-filtro:hover, .btn-filtro.active {
-            background: #e67b9d;
+            background: #c25a7a;
             transform: translateY(-3px);
         }
         
@@ -63,10 +263,54 @@
             transform: translateY(-10px);
         }
         
-        .producto-img {
+        .producto-img-container {
+            position: relative;
             height: 250px;
+            overflow: hidden;
+        }
+        
+        .producto-img {
+            height: 100%;
             background-size: cover;
             background-position: center;
+            transition: all 0.5s ease;
+        }
+        
+        .producto-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(216, 106, 140, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .producto:hover .producto-overlay {
+            opacity: 1;
+        }
+        
+        .producto:hover .producto-img {
+            filter: blur(3px);
+            transform: scale(1.1);
+        }
+        
+        .descripcion-detallada {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .descripcion-detallada ul {
+            text-align: left;
+            padding-left: 20px;
+            margin: 10px 0;
         }
         
         .producto-info {
@@ -80,14 +324,14 @@
         }
         
         .producto p {
-            color: #bc5fac;
+            color: #666;
             margin-bottom: 15px;
             min-height: 60px;
         }
         
         .producto .precio {
             font-weight: bold;
-            color: var(--rosa);
+            color: var(--rosa-oscuro);
             font-size: 1.2rem;
             margin: 10px 0;
         }
@@ -99,20 +343,324 @@
         }
         
         .btn-comprar {
-            flex: 2;
-            background-color: var(--rosa);
-        }
-        
-        .btn-detalles {
             flex: 1;
-            background-color: var(--marron);
+            background-color: var(--rosa-oscuro);
         }
         
         .categoria-header {
             margin: 50px 0 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--rosa);
+            border-bottom: 2px solid var(--rosa-oscuro);
             color: #8a4b5d;
+        }
+        
+        .contacto-especifico {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            color: #8a4b5d;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--rosa);
+            border-radius: 2px;
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: currentColor;
+        }
+        
+        .contacto {
+            background-color: var(--crema);
+        }
+        
+        .contacto-info, .contacto-form, .map {
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .contacto-info:hover, 
+        .contacto-form:hover, 
+        .map:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contacto-info h3, .contacto-form h3 {
+            margin-bottom: 20px;
+            color: var(--rosa);
+        }
+        
+        .contacto-item {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .contacto-item i {
+            font-size: 1.5rem;
+            color: var(--rosa);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contacto-item div p {
+            margin-bottom: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--rosa-claro);
+            border-radius: 50%;
+            color: var(--rosa);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            transform: translateY(-3px);
+        }
+        
+        .contacto-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus, 
+        .form-group select:focus {
+            border-color: var(--rosa);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 158, 188, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--rosa);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--blanco);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--rosa);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links i {
+            margin-right: 10px;
+            color: var(--rosa);
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--rosa);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 767px) {
+            .contacto-especifico {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                position: fixed;
+                right: 0;
+                top: 70px;
+                background-color: var(--blanco);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px var(--sombra);
+                clip-path: circle(0px at top right);
+                transition: clip-path 0.5s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at top right);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -143,7 +691,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Pasteles K'fe</h1>
-                <p>Delicias artesanales para endulzar tus momentos especiales</p>
+                <p>Dulces momentos hechos con amor y los mejores ingredientes</p>
                 <a href="#catalogo" class="btn">Ver Catálogo</a>
             </div>
         </div>
@@ -155,188 +703,368 @@
             <div class="section-header">
                 <div class="section-icon"><i class="fas fa-birthday-cake"></i></div>
                 <h2>Nuestro Catálogo Completo</h2>
-                <p>Selecciona tu favorito y haz tu pedido</p>
+                <p>Selecciona tu pastel ideal para cada ocasión</p>
             </div>
             
             <div class="filtros">
                 <button class="btn-filtro active" data-categoria="todos">Todos</button>
-                <button class="btn-filtro" data-categoria="pasteles">Pasteles</button>
-                <button class="btn-filtro" data-categoria="postres">Postres Individuales</button>
-                <button class="btn-filtro" data-categoria="ocasion">Por Ocasión</button>
+                <button class="btn-filtro" data-categoria="cumpleanos">Cumpleaños</button>
+                <button class="btn-filtro" data-categoria="bodas">Bodas</button>
+                <button class="btn-filtro" data-categoria="especiales">Ocasiones Especiales</button>
             </div>
             
-            <h3 class="categoria-header">Pasteles</h3>
+            <h3 class="categoria-header">Pasteles de Cumpleaños</h3>
             <div class="productos-grid">
-                <!-- Producto 1 -->
-                <div class="producto" data-categoria="pasteles">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-chocolate.jpg');"></div>
+                <!-- Pastel 1 -->
+                <div class="producto" data-categoria="cumpleanos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Delicioso pastel de chocolate con tres capas de bizcocho húmedo, relleno de crema de avellana y cubierto con ganache de chocolate semiamargo.</p>
+                                
+                                <p>Especificaciones:</p>
+                                <ul>
+                                    <li>Diámetro: 25 cm (10 porciones)</li>
+                                    <li>Sabor: Chocolate premium</li>
+                                    <li>Relleno: Crema de avellana</li>
+                                    <li>Cobertura: Ganache de chocolate</li>
+                                    <li>Decoración: Personalizable</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Pastel de Chocolate</h3>
-                        <p>Delicioso pastel de chocolate con relleno de crema y cubierta de ganache</p>
-                        <p class="precio">$350.00</p>
+                        <h3>Pastel de Chocolate Supreme</h3>
+                        <p>Bizcocho de chocolate con relleno de avellana y ganache</p>
+                        <p class="precio">$550.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 2 -->
-                <div class="producto" data-categoria="pasteles">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-vainilla.jpg');"></div>
+                <!-- Pastel 2 -->
+                <div class="producto" data-categoria="cumpleanos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1296&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Suave pastel de vainilla con relleno de frutas frescas de temporada y cubierta de crema chantillí. Decorado con frutas naturales y glaze brillante.</p>
+                                
+                                <p>Características:</p>
+                                <ul>
+                                    <li>Diámetro: 28 cm (12 porciones)</li>
+                                    <li>Sabor: Vainilla francesa</li>
+                                    <li>Relleno: Frutas de temporada</li>
+                                    <li>Cobertura: Crema chantillí</li>
+                                    <li>Decoración: Frutas frescas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Pastel de Vainilla</h3>
-                        <p>Esponjoso pastel de vainilla con relleno de frutas frescas y crema</p>
-                        <p class="precio">$320.00</p>
+                        <h3>Pastel de Vainilla con Frutas</h3>
+                        <p>Bizcocho de vainilla con relleno de frutas frescas y crema chantillí</p>
+                        <p class="precio">$600.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 3 -->
-                <div class="producto" data-categoria="pasteles">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-imposible.jpg');"></div>
+                <!-- Pastel 3 -->
+                <div class="producto" data-categoria="cumpleanos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1623334044303-241021148842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Exquisito pastel de red velvet con su característico color rojo intenso, relleno de cream cheese frosting y decorado con virutas de chocolate blanco.</p>
+                                
+                                <p>Detalles:</p>
+                                <ul>
+                                    <li>Diámetro: 22 cm (8 porciones)</li>
+                                    <li>Sabor: Red velvet</li>
+                                    <li>Relleno: Cream cheese frosting</li>
+                                    <li>Cobertura: Buttercream</li>
+                                    <li>Decoración: Virutas de chocolate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Pastel Imposible</h3>
-                        <p>La combinación perfecta de pastel de chocolate y flan de vainilla</p>
-                        <p class="precio">$380.00</p>
+                        <h3>Red Velvet Clásico</h3>
+                        <p>Pastel de red velvet con frosting de queso crema y chocolate</p>
+                        <p class="precio">$650.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 4 -->
-                <div class="producto" data-categoria="pasteles">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-zanahoria.jpg');"></div>
+                <!-- Pastel 4 -->
+                <div class="producto" data-categoria="cumpleanos">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1535254973040-607b474cb5d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Delicioso pastel de zanahoria con nueces, especias y trozos de piña, cubierto con un frosting de queso crema y decorado con nueces caramelizadas.</p>
+                                
+                                <p>Especificaciones:</p>
+                                <ul>
+                                    <li>Diámetro: 25 cm (10 porciones)</li>
+                                    <li>Sabor: Zanahoria con especias</li>
+                                    <li>Relleno: Piña y nueces</li>
+                                    <li>Cobertura: Frosting de queso crema</li>
+                                    <li>Decoración: Nueces caramelizadas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
                         <h3>Pastel de Zanahoria</h3>
-                        <p>Húmedo pastel de zanahoria con nueces y cubierta de queso crema</p>
-                        <p class="precio">$360.00</p>
+                        <p>Húmedo pastel de zanahoria con nueces y frosting de queso crema</p>
+                        <p class="precio">$580.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <h3 class="categoria-header">Postres Individuales</h3>
+            <h3 class="categoria-header">Pasteles para Bodas</h3>
             <div class="productos-grid">
-                <!-- Producto 5 -->
-                <div class="producto" data-categoria="postres">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/cheesecake-frutos.jpg');"></div>
+                <!-- Pastel 5 -->
+                <div class="producto" data-categoria="bodas">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1296&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Elegante pastel de boda de tres pisos con diseño clásico, decorado con buttercream suave y delicadas flores de azúcar. Disponible en diversos sabores.</p>
+                                
+                                <p>Contiene:</p>
+                                <ul>
+                                    <li>3 pisos (90 porciones)</li>
+                                    <li>Sabor: Combinable (vainilla, chocolate, red velvet)</li>
+                                    <li>Cubierta: Buttercream suizo</li>
+                                    <li>Decoración: Flores de azúcar</li>
+                                    <li>Incluye topper personalizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Cheesecake de Frutos Rojos</h3>
-                        <p>Suave cheesecake con base de galleta y cubierto de frutos rojos frescos</p>
-                        <p class="precio">$85.00 c/u</p>
+                        <h3>Pastel de Boda Clásico</h3>
+                        <p>Elegante pastel de tres pisos con buttercream y flores de azúcar</p>
+                        <p class="precio">Desde $3,500.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 6 -->
-                <div class="producto" data-categoria="postres">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pay-queso.jpg');"></div>
+                <!-- Pastel 6 -->
+                <div class="producto" data-categoria="bodas">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1574085732737-2bc31b1fd11e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Moderno pastel de boda con diseño geométrico y acabado en fondant liso. Decoración minimalista con detalles dorados o plateados según preferencia.</p>
+                                
+                                <p>Características:</p>
+                                <ul>
+                                    <li>2-3 pisos (60-90 porciones)</li>
+                                    <li>Sabor: Combinable a elección</li>
+                                    <li>Cubierta: Fondant suave</li>
+                                    <li>Decoración: Diseño geométrico</li>
+                                    <li>Acabado: Detalles metálicos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Pay de Queso</h3>
-                        <p>Clásico pay de queso con base de galleta y toque de limón</p>
-                        <p class="precio">$75.00 c/u</p>
+                        <h3>Pastel de Boda Moderno</h3>
+                        <p>Diseño geométrico con fondant y detalles metálicos elegantes</p>
+                        <p class="precio">Desde $4,200.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 7 -->
-                <div class="producto" data-categoria="postres">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/brownie-nuez.jpg');"></div>
+                <!-- Pastel 7 -->
+                <div class="producto" data-categoria="bodas">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1519671482749-4f2c5fda5f8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Romántico pastel de boda con efecto "naked cake", decorado con frutas frescas, flores comestibles y un toque rústico perfecto para bodas campestres.</p>
+                                
+                                <p>Composición:</p>
+                                <ul>
+                                    <li>2-3 pisos (50-80 porciones)</li>
+                                    <li>Sabor: Vainilla, chocolate o red velvet</li>
+                                    <li>Estilo: Naked cake</li>
+                                    <li>Decoración: Frutas y flores frescas</li>
+                                    <li>Acabado: Estilo rústico</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Brownie con Nuez</h3>
-                        <p>Brownie húmedo con trozos de chocolate y nuez caramelizada</p>
-                        <p class="precio">$65.00 c/u</p>
+                        <h3>Pastel Rústico para Boda</h3>
+                        <p>Naked cake decorado con frutas frescas y flores naturales</p>
+                        <p class="precio">Desde $2,800.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 8 -->
-                <div class="producto" data-categoria="postres">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/gelatina-mosaico.jpg');"></div>
+                <!-- Pastel 8 -->
+                <div class="producto" data-categoria="bodas">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1517433670267-08c4a44652af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1232&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Lujoso pastel de boda con detalles de encaje en fondant, perlas de azúcar y elegantes bordados comestibles. Un diseño tradicional y sofisticado.</p>
+                                
+                                <p>Contiene:</p>
+                                <ul>
+                                    <li>3-4 pisos (100-120 porciones)</li>
+                                    <li>Sabor: Combinación premium</li>
+                                    <li>Cubierta: Fondant de alta calidad</li>
+                                    <li>Decoración: Encaje comestible</li>
+                                    <li>Detalles: Perlas y bordados</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Gelatina Mosaico</h3>
-                        <p>Colorida gelatina con trozos de fruta y crema, perfecta para celebraciones</p>
-                        <p class="precio">$90.00 c/u</p>
+                        <h3>Pastel de Boda con Encaje</h3>
+                        <p>Diseño elegante con detalles de encaje comestible y perlas</p>
+                        <p class="precio">Desde $5,500.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <h3 class="categoria-header">Por Ocasión</h3>
+            <h3 class="categoria-header">Ocasiones Especiales</h3>
             <div class="productos-grid">
-                <!-- Producto 9 -->
-                <div class="producto" data-categoria="ocasion">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-boda.jpg');"></div>
+                <!-- Pastel 9 -->
+                <div class="producto" data-categoria="especiales">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1626193050591-1ffd6a1f588f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Pastel temático para XV años en colores personalizados, decorado con detalles dorados o plateados, flores de azúcar y diseño elegante acorde a la celebración.</p>
+                                
+                                <p>Elementos:</p>
+                                <ul>
+                                    <li>3 pisos (70 porciones)</li>
+                                    <li>Sabor: A elección del cliente</li>
+                                    <li>Decoración: Temática XV años</li>
+                                    <li>Colores: Personalizables</li>
+                                    <li>Detalles: Dorados/plateados</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="producto-info">
-                        <h3>Pastel de Bodas</h3>
-                        <p>Elegante pastel de bodas de tres pisos con decoración personalizada</p>
+                        <h3>Pastel para XV Años</h3>
+                        <p>Elegante diseño temático con detalles dorados y colores personalizados</p>
+                        <p class="precio">Desde $2,500.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pastel 10 -->
+                <div class="producto" data-categoria="especiales">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1586788680434-30d8b2db2599?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Divertido pastel temático para baby shower, con diseño personalizado según género o tema elegido. Decorado con figurillas comestibles y colores suaves.</p>
+                                
+                                <p>Incluye:</p>
+                                <ul>
+                                    <li>2 pisos (40 porciones)</li>
+                                    <li>Sabor: Vainilla o chocolate</li>
+                                    <li>Tema: Baby shower (personalizable)</li>
+                                    <li>Decoración: Figurillas comestibles</li>
+                                    <li>Colores: Pasteles</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Pastel para Baby Shower</h3>
+                        <p>Diseño temático personalizado para celebración de baby shower</p>
+                        <p class="precio">Desde $1,800.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pastel 11 -->
+                <div class="producto" data-categoria="especiales">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1296&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Pastel elegante para aniversarios, decorado con detalles florales y mensaje personalizado. Disponible en diversos sabores sofisticados para adultos.</p>
+                                
+                                <p>Opciones:</p>
+                                <ul>
+                                    <li>2 pisos (30 porciones)</li>
+                                    <li>Sabor: Mocha, amaretto, frutos rojos</li>
+                                    <li>Decoración: Elegante y sobria</li>
+                                    <li>Personalización: Mensaje incluido</li>
+                                    <li>Estilo: Sofisticado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Pastel de Aniversario</h3>
+                        <p>Diseño elegante para celebrar aniversarios con mensaje personalizado</p>
                         <p class="precio">Desde $1,200.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 10 -->
-                <div class="producto" data-categoria="ocasion">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-xv.jpg');"></div>
-                    <div class="producto-info">
-                        <h3>Pastel de XV Años</h3>
-                        <p>Pastel temático para XV años con diseño elegante y moderno</p>
-                        <p class="precio">Desde $950.00</p>
-                        <div class="producto-acciones">
-                            <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
+                <!-- Pastel 12 -->
+                <div class="producto" data-categoria="especiales">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1574085732737-2bc31b1fd11e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Pastel personalizado para cualquier ocasión especial, con diseño, sabores y decoración completamente adaptables a las necesidades del cliente.</p>
+                                
+                                <p>Opciones:</p>
+                                <ul>
+                                    <li>Tamaño: Personalizable</li>
+                                    <li>Sabores: Amplia variedad</li>
+                                    <li>Decoración: Totalmente personalizable</li>
+                                    <li>Temática: Según requerimiento</li>
+                                    <li>Asesoría: Incluida</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Producto 11 -->
-                <div class="producto" data-categoria="ocasion">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-cumple.jpg');"></div>
                     <div class="producto-info">
-                        <h3>Pastel de Cumpleaños</h3>
-                        <p>Divertidos pasteles personalizados para todas las edades</p>
-                        <p class="precio">Desde $450.00</p>
+                        <h3>Pastel Personalizado</h3>
+                        <p>Creación totalmente personalizada para tu ocasión especial</p>
+                        <p class="precio">Desde $1,000.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Producto 12 -->
-                <div class="producto" data-categoria="ocasion">
-                    <div class="producto-img" style="background-image: url('../assets/img/pasteles/pastel-bautizo.jpg');"></div>
-                    <div class="producto-info">
-                        <h3>Pastel de Bautizo</h3>
-                        <p>Delicados pasteles para celebraciones de bautizo con diseños infantiles</p>
-                        <p class="precio">Desde $500.00</p>
-                        <div class="producto-acciones">
-                            <button class="btn btn-comprar">Comprar Ahora</button>
-                            <button class="btn btn-detalles">Más Detalles</button>
                         </div>
                     </div>
                 </div>
@@ -359,16 +1087,24 @@
                         <p>WhatsApp: <a href="https://wa.me/525570855964">Enviar mensaje</a></p>
                     </div>
                     <div class="contacto-item">
+                        <i class="fab fa-instagram"></i>
+                        <p>Instagram: <a href="https://instagram.com/PastelesKfe">@PastelesKfe</a></p>
+                    </div>
+                    <div class="contacto-item">
                         <i class="fab fa-facebook"></i>
-                        <p>Facebook: <a href="https://facebook.com/PastelesKfe">facebook.com/PastelesKfe</a></p>
+                        <p>Facebook: <a href="https://facebook.com/PastelesKfe">Pasteles K'fe</a></p>
                     </div>
                     <div class="contacto-item">
                         <i class="fas fa-clock"></i>
-                        <p>Horario: Lunes a Sábado de 9:00 AM a 6:00 PM</p>
+                        <p>Horario: Lunes a Sábado de 8:00 AM a 8:00 PM</p>
+                    </div>
+                    <div class="contacto-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Pedidos con 48 horas de anticipación</p>
                     </div>
                 </div>
                 <div class="contacto-form">
-                    <h3>Solicitar Pedido Especial</h3>
+                    <h3>Solicitar Pedido</h3>
                     <form>
                         <div class="form-group">
                             <input type="text" placeholder="Nombre completo" required>
@@ -380,12 +1116,23 @@
                             <input type="email" placeholder="Correo electrónico" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Detalles de tu pedido" required></textarea>
+                            <select required>
+                                <option value="" disabled selected>Tipo de evento</option>
+                                <option>Cumpleaños</option>
+                                <option>Boda</option>
+                                <option>XV Años</option>
+                                <option>Baby Shower</option>
+                                <option>Aniversario</option>
+                                <option>Otro</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="date" placeholder="Fecha de entrega" required>
                         </div>
-                        <button type="submit" class="btn">Enviar Solicitud</button>
+                        <div class="form-group">
+                            <textarea placeholder="Describe tu pastel ideal" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Solicitar Presupuesto</button>
                     </form>
                 </div>
             </div>
@@ -398,10 +1145,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Pasteles K'fe</h3>
-                    <p>Endulzamos tus momentos especiales con los mejores pasteles artesanales.</p>
+                    <p>Dulces momentos hechos con amor y los mejores ingredientes.</p>
                     <div class="social-icons">
-                        <a href="https://facebook.com/PastelesKfe" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://instagram.com/PastelesKfe" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/PastelesKfe" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://wa.me/525570855964" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -411,16 +1158,16 @@
                     <ul class="footer-links">
                         <li><a href="../index.html">Inicio</a></li>
                         <li><a href="#catalogo">Catálogo</a></li>
-                        <li><a href="../contacto.html">Contacto General</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="../index.html#contacto">Contacto General</a></li>
+                        <li><a href="#">Política de Pedidos</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Horario</h3>
-                    <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
-                    <p>Sábados: 10:00 AM - 2:00 PM</p>
-                    <p>Domingos: Cerrado</p>
+                    <p>Lunes a Sábado: 8:00 AM - 8:00 PM</p>
+                    <p>Domingos: Pedidos con previa cita</p>
+                    <p>Entrega a domicilio disponible</p>
                 </div>
             </div>
             
@@ -430,7 +1177,6 @@
         </div>
     </footer>
 
-    <script src="../assets/js/script.js"></script>
     <script>
         // Filtrado de productos
         const filtros = document.querySelectorAll('.btn-filtro');
@@ -477,8 +1223,17 @@
             boton.addEventListener('click', () => {
                 const producto = boton.closest('.producto');
                 const nombre = producto.querySelector('h3').textContent;
-                alert(¡Gracias por seleccionar ${nombre}! Serás redirigido al proceso de compra.);
+                alert(¡Gracias por seleccionar "${nombre}"! Serás redirigido al proceso de compra.);
             });
+        });
+        
+        // Menú hamburguesa
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
         });
     </script>
 </body>
