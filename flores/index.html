@@ -164,6 +164,34 @@
             .contacto-especifico {
                 grid-template-columns: 1fr;
             }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
         }
     </style>
 </head>
@@ -216,7 +244,7 @@
                 <button class="btn-filtro" data-categoria="eventos">Para Eventos</button>
             </div>
             
-            <h3 class="categoria-header">Ramos y Bouquets</h3>
+            <h3 class="categoria-header" data-categoria="ramos">Ramos y Bouquets</h3>
             <div class="productos-grid">
                 <!-- Arreglo 1 -->
                 <div class="producto" data-categoria="ramos">
@@ -336,7 +364,7 @@
                 </div>
             </div>
             
-            <h3 class="categoria-header">Centros de Mesa</h3>
+            <h3 class="categoria-header" data-categoria="centros">Centros de Mesa</h3>
             <div class="productos-grid">
                 <!-- Arreglo 5 -->
                 <div class="producto" data-categoria="centros">
@@ -455,7 +483,7 @@
                 </div>
             </div>
             
-            <h3 class="categoria-header">Para Eventos Especiales</h3>
+            <h3 class="categoria-header" data-categoria="eventos">Para Eventos Especiales</h3>
             <div class="productos-grid">
                 <!-- Arreglo 9 -->
                 <div class="producto" data-categoria="eventos">
@@ -467,7 +495,7 @@
                                 
                                 <p>Elementos:</p>
                                 <ul>
-                                    <li>Rosas y peonias en tonos pastel</li>
+                                    <li>Rosas and peonias en tonos pastel</li>
                                     <li>Detalles dorados y perlas</li>
                                     <li>Base para centro de mesa</li>
                                     <li>Altura: 60 cm</li>
@@ -630,7 +658,7 @@
                         <div class="form-group">
                             <input type="date" placeholder="Fecha del evento" required>
                         </div>
-                        <!-- <button type="submit" class="btn">Solicitar Presupuesto</button> -->
+                        <button type="submit" class="btn">Solicitar Presupuesto</button>
                     </form>
                 </div>
             </div>
@@ -677,9 +705,20 @@
 
     <script src="../assets/js/script.js"></script>
     <script>
+        // Menú hamburguesa para móviles
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
         // Filtrado de productos
         const filtros = document.querySelectorAll('.btn-filtro');
         const productos = document.querySelectorAll('.producto');
+        const categoriasHeaders = document.querySelectorAll('.categoria-header');
         
         filtros.forEach(filtro => {
             filtro.addEventListener('click', () => {
@@ -692,26 +731,31 @@
                 const categoria = filtro.getAttribute('data-categoria');
                 
                 if (categoria === 'todos') {
+                    // Mostrar todos los productos y encabezados
                     productos.forEach(producto => {
                         producto.style.display = 'block';
                     });
-                    document.querySelectorAll('.categoria-header').forEach(header => {
+                    categoriasHeaders.forEach(header => {
                         header.style.display = 'block';
                     });
                 } else {
-                    // Ocultar todos los productos
+                    // Ocultar todos los productos primero
                     productos.forEach(producto => {
                         producto.style.display = 'none';
                     });
                     
-                    // Mostrar solo los de la categoría seleccionada
-                    document.querySelectorAll(.producto[data-categoria="${categoria}"]).forEach(producto => {
+                    // Mostrar solo los productos de la categoría seleccionada
+                    document.querySelectorAll(`.producto[data-categoria="${categoria}"]`).forEach(producto => {
                         producto.style.display = 'block';
                     });
                     
-                    // Ocultar todos los encabezados
-                    document.querySelectorAll('.categoria-header').forEach(header => {
-                        header.style.display = 'none';
+                    // Manejar encabezados de categoría
+                    categoriasHeaders.forEach(header => {
+                        if (header.getAttribute('data-categoria') === categoria) {
+                            header.style.display = 'block';
+                        } else {
+                            header.style.display = 'none';
+                        }
                     });
                 }
             });
@@ -722,7 +766,7 @@
             boton.addEventListener('click', () => {
                 const producto = boton.closest('.producto');
                 const nombre = producto.querySelector('h3').textContent;
-                alert(¡Gracias por seleccionar "${nombre}"! Serás redirigido al proceso de compra.);
+                alert(`¡Gracias por seleccionar "${nombre}"! Serás redirigido al proceso de compra.`);
             });
         });
     </script>
