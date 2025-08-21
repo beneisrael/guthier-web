@@ -9,18 +9,17 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         :root {
-            --gris: #e0e0e0;
-            --gris-oscuro: #444;
-            --azul: #6a9ebd;
-            --azul-oscuro: #3a6a8a;
+            --color-primario: #6a9ebd;
+            --color-secundario: #3a6a8a;
+            --color-acento: #ff9ebc;
         }
         
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1591369822090-8d9d0a1a0e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1952&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/costuras-bg.jpg') center/cover no-repeat;
         }
         
         .catalogo {
-            background-color: var(--gris);
+            background-color: var(--color-primario);
         }
         
         .filtros {
@@ -34,7 +33,7 @@
         .btn-filtro {
             padding: 10px 20px;
             border: none;
-            background: var(--gris-oscuro);
+            background: var(--color-secundario);
             color: white;
             border-radius: 30px;
             cursor: pointer;
@@ -42,7 +41,7 @@
         }
         
         .btn-filtro:hover, .btn-filtro.active {
-            background: #333;
+            background: #2a506a;
             transform: translateY(-3px);
         }
         
@@ -83,7 +82,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(68, 68, 68, 0.9);
+            background: rgba(58, 106, 138, 0.9);
             color: white;
             display: flex;
             align-items: center;
@@ -121,7 +120,7 @@
         .producto h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--gris-oscuro);
+            color: #2e4b6b;
         }
         
         .producto p {
@@ -132,7 +131,7 @@
         
         .producto .precio {
             font-weight: bold;
-            color: var(--gris-oscuro);
+            color: var(--color-secundario);
             font-size: 1.2rem;
             margin: 10px 0;
         }
@@ -145,14 +144,14 @@
         
         .btn-comprar {
             flex: 1;
-            background-color: var(--gris-oscuro);
+            background-color: var(--color-secundario);
         }
         
         .categoria-header {
             margin: 50px 0 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--gris-oscuro);
-            color: var(--gris-oscuro);
+            border-bottom: 2px solid var(--color-secundario);
+            color: #2e4b6b;
         }
         
         .contacto-especifico {
@@ -164,6 +163,34 @@
         @media (max-width: 767px) {
             .contacto-especifico {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+                cursor: pointer;
             }
         }
     </style>
@@ -217,31 +244,31 @@
                 <button class="btn-filtro" data-categoria="reparaciones">Reparaciones</button>
             </div>
             
-            <h3 class="categoria-header">Confección de Prendas</h3>
+            <h3 class="categoria-header" data-categoria="confeccion">Confección de Prendas</h3>
             <div class="productos-grid">
                 <!-- Servicio 1 -->
                 <div class="producto" data-categoria="confeccion">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1595273670150-bd0c0c392278?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/vestido-gala.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Vestidos elegantes confeccionados a medida para ocasiones especiales. Utilizamos telas de calidad y patrones personalizados.</p>
+                                <p>Diseño y confección de vestidos de gala a medida, utilizando telas de alta calidad y acabados impecables para ocasiones especiales.</p>
                                 
-                                <p>Detalles:</p>
+                                <p>Detalles del servicio:</p>
                                 <ul>
-                                    <li>Diseño personalizado según tus medidas</li>
-                                    <li>Variedad de telas y estilos</li>
-                                    <li>Pruebas de ajuste incluidas</li>
-                                    <li>Tiempo de entrega: 2-3 semanas</li>
-                                    <li>Asesoría de estilo incluida</li>
+                                    <li>Consulta de diseño personalizada</li>
+                                    <li>Selección de telas y materiales</li>
+                                    <li>Tres sesiones de ajustes</li>
+                                    <li>Acabados profesionales</li>
+                                    <li>Entrega en 2-3 semanas</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Vestidos a Medida</h3>
-                        <p>Diseño y confección de vestidos exclusivos según tus medidas y preferencias</p>
-                        <p class="precio">Desde $1,200.00</p>
+                        <h3>Vestidos de Gala</h3>
+                        <p>Confección de vestidos elegantes para bodas, XV años y eventos especiales</p>
+                        <p class="precio">Desde $1,500.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -251,26 +278,26 @@
                 <!-- Servicio 2 -->
                 <div class="producto" data-categoria="confeccion">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1591369822090-8d9d0a1a0e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/traje-mujer.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Confección profesional de trajes formales para hombres y mujeres. Perfectos para eventos de negocios, bodas y ocasiones especiales.</p>
+                                <p>Confección de trajes formales para mujer con diseños contemporáneos y clásicos, perfectos para oficina o eventos de negocios.</p>
                                 
                                 <p>Características:</p>
                                 <ul>
-                                    <li>Telas de alta calidad</li>
-                                    <li>Diseño clásico o moderno</li>
+                                    <li>Patrones personalizados</li>
+                                    <li>Telas resistentes y de calidad</li>
+                                    <li>Diseños modernos y clásicos</li>
                                     <li>Ajuste perfecto garantizado</li>
-                                    <li>Forros y acabados premium</li>
-                                    <li>Complementos incluidos</li>
+                                    <li>Entrega en 7-10 días</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
                         <h3>Trajes Formales</h3>
-                        <p>Confección de trajes elegantes para ocasiones especiales y negocios</p>
-                        <p class="precio">Desde $1,500.00</p>
+                        <p>Confección de trajes elegantes para mujer con telas de alta calidad</p>
+                        <p class="precio">Desde $900.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -280,26 +307,55 @@
                 <!-- Servicio 3 -->
                 <div class="producto" data-categoria="confeccion">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/ropa-infantil.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Cortinas y artículos para el hogar confeccionados a medida. Transforma tus espacios con diseños personalizados.</p>
+                                <p>Confección de ropa infantil cómoda, divertida y con diseños originales. Utilizamos telas suaves e hipoalergénicas para la piel sensible de los niños.</p>
                                 
                                 <p>Opciones:</p>
                                 <ul>
-                                    <li>Cortinas de diferentes estilos</li>
-                                    <li>Cubre sillones y cojines</li>
-                                    <li>Ropa de cama personalizada</li>
-                                    <li>Telas resistentes y lavables</li>
-                                    <li>Instalación incluida</li>
+                                    <li>Vestidos para niñas</li>
+                                    <li>Conjuntos para niños</li>
+                                    <li>Ropa para bebés</li>
+                                    <li>Disfraces personalizados</li>
+                                    <li>Telas antialérgicas</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Cortinas y Hogar</h3>
-                        <p>Confección de cortinas y artículos para el hogar a medida</p>
-                        <p class="precio">Desde $800.00</p>
+                        <h3>Ropa Infantil</h3>
+                        <p>Prendas cómodas y divertidas para niños con telas hipoalergénicas</p>
+                        <p class="precio">Desde $300.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Solicitar Servicio</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="producto" data-categoria="confeccion">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/uniformes.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Confección de uniformes escolares, laborales o deportivos con materiales resistentes y de calidad. Diseños personalizados según necesidades.</p>
+                                
+                                <p>Especificaciones:</p>
+                                <ul>
+                                    <li>Telas resistentes y duraderas</li>
+                                    <li>Diseños personalizables</li>
+                                    <li>Bordado de logos incluido</li>
+                                    <li>Múltiples tallas disponibles</li>
+                                    <li>Descuentos por volumen</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Uniformes</h3>
+                        <p>Confección de uniformes escolares, laborales y deportivos personalizados</p>
+                        <p class="precio">Desde $250.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -307,60 +363,31 @@
                 </div>
             </div>
             
-            <h3 class="categoria-header">Ajustes y Arreglos</h3>
+            <h3 class="categoria-header" data-categoria="ajustes">Ajustes y Modificaciones</h3>
             <div class="productos-grid">
-                <!-- Servicio 4 -->
+                <!-- Servicio 5 -->
                 <div class="producto" data-categoria="ajustes">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1595273670150-bd0c0c392278?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/ajuste-pantalon.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Servicio profesional de ajuste de pantalones. Modificamos largo, cintura y pernera para un ajuste perfecto.</p>
+                                <p>Ajuste profesional de pantalones para mejorar el calce y comodidad. Incluye modificación de cintura, largo y pernera según tus medidas.</p>
                                 
-                                <p>Tipos de ajuste:</p>
+                                <p>Servicio incluye:</p>
                                 <ul>
+                                    <li>Medición precisa</li>
                                     <li>Ajuste de cintura</li>
-                                    <li>Acortamiento o alargamiento</li>
+                                    <li>Modificación de largo</li>
                                     <li>Ajuste de pernera</li>
-                                    <li>Reducción de vuelo</li>
-                                    <li>Ajuste para diferentes tipos de calzado</li>
+                                    <li>Acabados profesionales</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
                         <h3>Ajuste de Pantalones</h3>
-                        <p>Servicio profesional para ajustar la cintura y largo de tus pantalones</p>
+                        <p>Modificación de cintura, largo y pernera para un calce perfecto</p>
                         <p class="precio">Desde $120.00</p>
-                        <div class="producto-acciones">
-                            <button class="btn btn-comprar">Solicitar Servicio</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Servicio 5 -->
-                <div class="producto" data-categoria="ajustes">
-                    <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1554238113-9d19ac3d0a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
-                        <div class="producto-overlay">
-                            <div class="descripcion-detallada">
-                                <p>Reducción o aumento de tallas en todo tipo de prendas. Servicio profesional para adaptar tu ropa a tus medidas actuales.</p>
-                                
-                                <p>Proceso:</p>
-                                <ul>
-                                    <li>Evaluación de la prenda</li>
-                                    <li>Marcado de nuevas medidas</li>
-                                    <li>Modificación profesional</li>
-                                    <li>Prueba de ajuste</li>
-                                    <li>Acabados perfectos</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3>Modificación de Tallas</h3>
-                        <p>Reducción o aumento de tallas en blusas, vestidos y pantalones</p>
-                        <p class="precio">Desde $180.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -370,58 +397,55 @@
                 <!-- Servicio 6 -->
                 <div class="producto" data-categoria="ajustes">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1591369822090-8d9d0a1a0e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/ajuste-vestido.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Transformación de prendas antiguas en diseños modernos y a la moda. Dale nueva vida a tu ropa.</p>
+                                <p>Ajuste completo de vestidos para adaptarlos a tus medidas actuales. Ideal para prendas que ya no te quedan como antes o que adquiriste de segunda mano.</p>
                                 
-                                <p>Opciones:</p>
+                                <p>Tipos de ajuste:</p>
                                 <ul>
-                                    <li>Modernización de estilo</li>
-                                    <li>Cambio de cuellos y mangas</li>
-                                    <li>Incorporación de detalles modernos</li>
-                                    <li>Cambio de botones y cierres</li>
-                                    <li>Personalización única</li>
+                                    <li>Reducción o aumento de talla</li>
+                                    <li>Modificación de escote</li>
+                                    <li>Ajuste de mangas</li>
+                                    <li>Cambio de largo</li>
+                                    <li>Transformación de estilo</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Modernización de Prendas</h3>
-                        <p>Transformación de prendas antiguas en diseños modernos y a la moda</p>
-                        <p class="precio">Desde $250.00</p>
+                        <h3>Ajuste de Vestidos</h3>
+                        <p>Modificación completa de vestidos para adaptarlos a tus medidas</p>
+                        <p class="precio">Desde $180.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <h3 class="categoria-header">Reparaciones</h3>
-            <div class="productos-grid">
+                
                 <!-- Servicio 7 -->
-                <div class="producto" data-categoria="reparaciones">
+                <div class="producto" data-categoria="ajustes">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1595273670150-bd0c0c392278?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/ajuste-chaleco.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Reemplazo profesional de cremalleras en todo tipo de prendas y accesorios. Utilizamos cremalleras de calidad.</p>
+                                <p>Ajuste profesional de chalecos, sacos y chaquetas para un look impecable. Perfecto para prendas de vestir que necesitan adaptarse a tu cuerpo.</p>
                                 
-                                <p>Aplicaciones:</p>
+                                <p>Ajustes disponibles:</p>
                                 <ul>
-                                    <li>Pantalones y faldas</li>
-                                    <li>Chaquetas y abrigos</li>
-                                    <li>Vestidos y monos</li>
-                                    <li>Bolsos y maletas</li>
-                                    <li>Calzado y accesorios</li>
+                                    <li>Modificación de hombros</li>
+                                    <li>Ajuste de espalda</li>
+                                    <li>Reducción de mangas</li>
+                                    <li>Ajuste de cintura</li>
+                                    <li>Forrado y entretelado</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Cambio de Cremalleras</h3>
-                        <p>Reemplazo de cremalleras en todo tipo de prendas y accesorios</p>
-                        <p class="precio">Desde $80.00</p>
+                        <h3>Ajuste de Sacos y Chaquetas</h3>
+                        <p>Modificación profesional de prendas superiores para mejor calce</p>
+                        <p class="precio">Desde $150.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -429,27 +453,88 @@
                 </div>
                 
                 <!-- Servicio 8 -->
-                <div class="producto" data-categoria="reparaciones">
+                <div class="producto" data-categoria="ajustes">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1554238113-9d19ac3d0a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/transformacion-prenda.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Reparación profesional de roturas, rasgaduras y agujeros en todo tipo de telas. Devolvemos a tu ropa su apariencia original.</p>
+                                <p>Transformación creativa de prendas para darles un nuevo estilo o función. Convertimos prendas antiguas en diseños modernos y a la moda.</p>
                                 
-                                <p>Técnicas:</p>
+                                <p>Transformaciones populares:</p>
+                                <ul>
+                                    <li>Pantalones a shorts o bermudas</li>
+                                    <li>Vestidos largos a cortos</li>
+                                    <li>Camisas a tops o blusas</li>
+                                    <li>Reutilización de telas</li>
+                                    <li>Actualización de estilo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Transformación de Prendas</h3>
+                        <p>Conversión creativa de prendas antiguas en diseños modernos</p>
+                        <p class="precio">Desde $200.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Solicitar Servicio</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="categoria-header" data-categoria="reparaciones">Reparaciones y Arreglos</h3>
+            <div class="productos-grid">
+                <!-- Servicio 9 -->
+                <div class="producto" data-categoria="reparaciones">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/reparacion-cremallera.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Reparación y cambio profesional de cremalleras en todo tipo de prendas y accesorios. Utilizamos cremalleras de calidad para garantizar durabilidad.</p>
+                                
+                                <p>Tipos de cremalleras:</p>
+                                <ul>
+                                    <li>Cremalleras para pantalones</li>
+                                    <li>Cremalleras para vestidos</li>
+                                    <li>Cremalleras para chamarras</li>
+                                    <li>Cremalleras invisibles</li>
+                                    <li>Cremalleras decorativas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Cambio de Cremalleras</h3>
+                        <p>Reemplazo profesional de cremalleras en prendas y accesorios</p>
+                        <p class="precio">Desde $80.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Solicitar Servicio</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 10 -->
+                <div class="producto" data-categoria="reparaciones">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/parche-ropa.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Reparación invisible de roturas, rasgaduras y agujeros en todo tipo de telas. Utilizamos técnicas especializadas para disimular las reparaciones.</p>
+                                
+                                <p>Tipos de reparaciones:</p>
                                 <ul>
                                     <li>Parches invisibles</li>
                                     <li>Zurcido profesional</li>
-                                    <li>Costura especializada</li>
                                     <li>Reparación de costuras</li>
+                                    <li>Arreglo de bordados</li>
                                     <li>Refuerzo de áreas débiles</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Reparación de Roturas</h3>
-                        <p>Reparación profesional de roturas, rasgaduras y agujeros en todo tipo de telas</p>
+                        <h3>Parches y Zurcidos</h3>
+                        <p>Reparación invisible de roturas y rasgaduras en todo tipo de telas</p>
                         <p class="precio">Desde $60.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
@@ -457,29 +542,58 @@
                     </div>
                 </div>
                 
-                <!-- Servicio 9 -->
+                <!-- Servicio 11 -->
                 <div class="producto" data-categoria="reparaciones">
                     <div class="producto-img-container">
-                        <div class="producto-img" style="background-image: url('https://images.unsplash.com/photo-1591369822090-8d9d0a1a0e1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/botones-hilos.jpg');"></div>
                         <div class="producto-overlay">
                             <div class="descripcion-detallada">
-                                <p>Aplicación de parches decorativos y bordados personalizados para renovar y personalizar tus prendas.</p>
+                                <p>Sustitución profesional de botones y ojales en todo tipo de prendas. Utilizamos hilos de alta calidad que coinciden perfectamente con el color original.</p>
                                 
-                                <p>Opciones:</p>
+                                <p>Servicio incluye:</p>
                                 <ul>
-                                    <li>Parches decorativos</li>
-                                    <li>Bordados personalizados</li>
-                                    <li>Aplicación de lentejuelas</li>
-                                    <li>Parches para cubrir daños</li>
-                                    <li>Diseños personalizados</li>
+                                    <li>Selección de botones apropiados</li>
+                                    <li>Refuerzo de áreas débiles</li>
+                                    <li>Creación de ojales nuevos</li>
+                                    <li>Costura reforzada</li>
+                                    <li>Limpieza final de la prenda</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="producto-info">
-                        <h3>Parches y Bordados</h3>
-                        <p>Aplicación de parches decorativos y bordados personalizados</p>
-                        <p class="precio">Desde $100.00</p>
+                        <h3>Cambio de Botones y Ojales</h3>
+                        <p>Sustitución profesional de botones y creación de ojales</p>
+                        <p class="precio">Desde $50.00</p>
+                        <div class="producto-acciones">
+                            <button class="btn btn-comprar">Solicitar Servicio</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Servicio 12 -->
+                <div class="producto" data-categoria="reparaciones">
+                    <div class="producto-img-container">
+                        <div class="producto-img" style="background-image: url('../assets/img/costuras/ropa-danada.jpg');"></div>
+                        <div class="producto-overlay">
+                            <div class="descripcion-detallada">
+                                <p>Reparación especializada de prendas muy dañadas o con problemas complejos. Rescatamos prendas que parecían beyond repair con técnicas avanzadas.</p>
+                                
+                                <p>Reparaciones complejas:</p>
+                                <ul>
+                                    <li>Prendas con daños extensos</li>
+                                    <li>Reparación de tejidos delicados</li>
+                                    <li>Reconstrucción de áreas perdidas</li>
+                                    <li>Restauración de prendas vintage</li>
+                                    <li>Reparación de bordados antiguos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Reparaciones Complejas</h3>
+                        <p>Restauración de prendas muy dañadas con técnicas especializadas</p>
+                        <p class="precio">Desde $250.00</p>
                         <div class="producto-acciones">
                             <button class="btn btn-comprar">Solicitar Servicio</button>
                         </div>
@@ -505,7 +619,7 @@
                     </div>
                     <div class="contacto-item">
                         <i class="fab fa-facebook"></i>
-                        <p>Facebook: <a href="https://facebook.com/ViryCosturas">/ViryCosturas</a></p>
+                        <p>Facebook: <a href="https://facebook.com/ViryCosturas">Viry Costuras</a></p>
                     </div>
                     <div class="contacto-item">
                         <i class="fab fa-tiktok"></i>
@@ -526,19 +640,19 @@
                             <input type="tel" placeholder="Teléfono" required>
                         </div>
                         <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
                             <select required>
                                 <option value="" disabled selected>Tipo de servicio</option>
                                 <option>Confección</option>
                                 <option>Ajustes</option>
                                 <option>Reparaciones</option>
-                                <option>Otro</option>
+                                <option>Consulta general</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <textarea placeholder="Describe el servicio que necesitas" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" placeholder="Fecha preferente" required>
                         </div>
                         <button type="submit" class="btn">Solicitar Servicio</button>
                     </form>
@@ -587,9 +701,20 @@
 
     <script src="../assets/js/script.js"></script>
     <script>
+        // Menú hamburguesa para móviles
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
         // Filtrado de servicios
         const filtros = document.querySelectorAll('.btn-filtro');
         const servicios = document.querySelectorAll('.producto');
+        const categoriasHeaders = document.querySelectorAll('.categoria-header');
         
         filtros.forEach(filtro => {
             filtro.addEventListener('click', () => {
@@ -602,77 +727,42 @@
                 const categoria = filtro.getAttribute('data-categoria');
                 
                 if (categoria === 'todos') {
+                    // Mostrar todos los servicios y encabezados
                     servicios.forEach(servicio => {
                         servicio.style.display = 'block';
                     });
-                    document.querySelectorAll('.categoria-header').forEach(header => {
+                    categoriasHeaders.forEach(header => {
                         header.style.display = 'block';
                     });
                 } else {
-                    // Ocultar todos los servicios
+                    // Ocultar todos los servicios primero
                     servicios.forEach(servicio => {
                         servicio.style.display = 'none';
                     });
                     
-                    // Mostrar solo los de la categoría seleccionada
-                    document.querySelectorAll(.producto[data-categoria="${categoria}"]).forEach(servicio => {
+                    // Mostrar solo los servicios de la categoría seleccionada
+                    document.querySelectorAll(`.producto[data-categoria="${categoria}"]`).forEach(servicio => {
                         servicio.style.display = 'block';
                     });
                     
-                    // Ocultar todos los encabezados
-                    document.querySelectorAll('.categoria-header').forEach(header => {
-                        header.style.display = 'none';
+                    // Manejar encabezados de categoría
+                    categoriasHeaders.forEach(header => {
+                        if (header.getAttribute('data-categoria') === categoria) {
+                            header.style.display = 'block';
+                        } else {
+                            header.style.display = 'none';
+                        }
                     });
                 }
             });
         });
         
-        // Botones de servicio
+        // Botones de solicitud de servicio
         document.querySelectorAll('.btn-comprar').forEach(boton => {
             boton.addEventListener('click', () => {
                 const servicio = boton.closest('.producto');
                 const nombre = servicio.querySelector('h3').textContent;
-                alert(¡Gracias por seleccionar "${nombre}"! Nos pondremos en contacto contigo para confirmar los detalles.);
-            });
-        });
-
-        // Menú móvil - Funcionalidad corregida
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('toggle');
-            });
-            
-            // Cerrar menú al hacer clic en un enlace
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('toggle');
-                });
-            });
-        }
-
-        // Smooth scrolling para enlaces internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                alert(`¡Gracias por tu interés en "${nombre}"! Nos pondremos en contacto contigo para confirmar los detalles.`);
             });
         });
     </script>
